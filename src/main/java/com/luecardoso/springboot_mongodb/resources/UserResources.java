@@ -1,5 +1,6 @@
 package com.luecardoso.springboot_mongodb.resources;
 
+import com.luecardoso.springboot_mongodb.domain.Post;
 import com.luecardoso.springboot_mongodb.domain.User;
 import com.luecardoso.springboot_mongodb.dto.UserDTO;
 import com.luecardoso.springboot_mongodb.services.UserService;
@@ -57,5 +58,10 @@ public class UserResources {
         return ResponseEntity.noContent().build();
     }
 
+    @RequestMapping(value="/{id}/posts", method=RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
+    }
 
 }
