@@ -1,2 +1,19 @@
-package com.luecardoso.springboot_mongodb.services;public class UserService {
+package com.luecardoso.springboot_mongodb.services;
+
+import com.luecardoso.springboot_mongodb.domain.User;
+import com.luecardoso.springboot_mongodb.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository repo;
+
+    public List<User> findAll() {
+        return repo.findAll();
+    }
 }
